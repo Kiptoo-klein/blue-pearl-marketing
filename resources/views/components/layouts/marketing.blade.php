@@ -36,7 +36,7 @@
                 aria-label="{{ config('company.name') }} home"
             >
                 <img
-                    src="{{ asset('images/blue-pearl-logo.png') }}"
+                    src="{{ asset('images/blue-pearl-logo-transparent.png') }}"
                     alt="{{ config('company.name') }}"
                     width="185"
                     height="74"
