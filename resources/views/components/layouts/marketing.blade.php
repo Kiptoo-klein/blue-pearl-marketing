@@ -81,6 +81,7 @@
                     <a href="{{ route('home') }}" class="rounded-xl px-4 py-3 text-sm font-bold hover:bg-slate-100">Home</a>
                     <a href="{{ route('about') }}" class="rounded-xl px-4 py-3 text-sm font-bold hover:bg-slate-100">About</a>
                     <a href="{{ route('services') }}" class="rounded-xl px-4 py-3 text-sm font-bold hover:bg-slate-100">Services</a>
+                    <a href="{{ route('faq') }}" class="rounded-xl px-4 py-3 text-sm font-bold hover:bg-slate-100">FAQ</a>
                     <a href="{{ route('contact') }}" class="rounded-xl px-4 py-3 text-sm font-bold hover:bg-slate-100">Contact</a>
                     <a href="{{ route('quote') }}" class="mt-2 rounded-xl bg-cyan-600 px-4 py-3 text-center text-sm font-black text-white">Request a Quote</a>
                 </nav>
@@ -116,6 +117,7 @@
                     <a href="{{ route('about') }}" class="hover:text-cyan-300">About Us</a>
                     <a href="{{ route('services') }}" class="hover:text-cyan-300">Our Services</a>
                     <a href="{{ route('quote') }}" class="hover:text-cyan-300">Request a Quote</a>
+                    <a href="{{ route('faq') }}" class="hover:text-cyan-300">FAQ</a>
                     <a href="{{ route('contact') }}" class="hover:text-cyan-300">Contact</a>
                 </div>
             </div>
