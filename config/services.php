@@ -80,9 +80,9 @@ return [
     ],
 
     'container-handling' => [
-        'name' => 'Container Handling',
+        'name' => 'Port & Container Handling',
         'eyebrow' => 'Port to destination',
-        'summary' => 'Support for FCL and LCL cargo from port processing through transport and empty-container return.',
+        'summary' => 'Port handling and support for FCL and LCL cargo from release through transport and empty-container return.',
         'intro' => 'Blue Pearl Logistics helps coordinate containerized cargo after arrival, including release, transport, delivery and return requirements.',
         'features' => [
             'Full-container-load support',
@@ -128,6 +128,7 @@ return [
             'Vehicle clearance coordination',
             'Port release support',
             'Inspection and requirement guidance',
+            'Vehicle registration assistance',
             'Delivery planning',
             'Client updates throughout the process',
         ],

@@ -1,6 +1,6 @@
 <x-layouts.marketing
     title="Customs Clearance and Freight Support"
-    description="Blue Pearl Logistics provides customs clearance, freight forwarding, container handling, vehicle importation and delivery support in Kenya."
+    description="Blue Pearl Logistics Limited is a Kenya-based company providing customs clearance, freight forwarding, port and container handling, vehicle importation and delivery support for clients in Kenya and the DRC."
 >
     <section class="relative overflow-hidden bg-slate-950 text-white">
         <div class="absolute inset-0 opacity-30">
@@ -18,7 +18,7 @@
                     <span class="text-cyan-300">Move it with confidence.</span>
                 </h1>
                 <p class="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
-                    Support for customs clearance, freight forwarding, container handling, vehicle importation and cargo delivery in Kenya.
+                    Kenya-based support for customs clearance, freight forwarding, port and container handling, vehicle importation and cargo delivery for clients in Kenya and the DRC.
                 </p>
                 <div class="mt-9 flex flex-col gap-3 sm:flex-row">
                     <a href="{{ route('quote') }}" class="rounded-full bg-cyan-400 px-7 py-3.5 text-center text-sm font-black text-slate-950 hover:bg-cyan-300">
@@ -63,8 +63,8 @@
                 @foreach ([
                     ['Customs Clearance', 'Documentation, customs processing and release coordination.'],
                     ['Freight Forwarding', 'Sea, air, import and export cargo movement support.'],
-                    ['Container Handling', 'Port release, transport and empty-container return support.'],
-                    ['Vehicle Importation', 'Clearance guidance and delivery for imported vehicles.'],
+                    ['Port & Container Handling', 'Port handling, release, transport and empty-container return support.'],
+                    ['Vehicle Importation', 'Clearance, registration assistance and delivery support for imported vehicles.'],
                 ] as [$service, $summary])
                     <article class="rounded-3xl border border-slate-200 p-6 shadow-sm transition hover:-translate-y-1 hover:border-cyan-300 hover:shadow-xl">
                         <span class="grid size-12 place-items-center rounded-2xl bg-cyan-100 text-sm font-black text-cyan-700">BP</span>

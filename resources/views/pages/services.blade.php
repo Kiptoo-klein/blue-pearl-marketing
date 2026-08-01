@@ -11,8 +11,8 @@
             @foreach ([
                 ['Customs Clearance', 'Support with shipment documents, customs processes and cargo release.'],
                 ['Freight Forwarding', 'Coordination for cargo moving by sea or air, for imports and exports.'],
-                ['Container Handling', 'Support for FCL and LCL cargo from port release to empty return.'],
-                ['Vehicle Importation', 'Guidance and coordination for vehicles arriving through the port.'],
+                ['Port & Container Handling', 'Port handling and support for FCL and LCL cargo from release to empty return.'],
+                ['Vehicle Importation', 'Clearance, registration assistance and coordination for imported vehicles.'],
                 ['Transport and Delivery', 'Cargo movement from the port or terminal to the final destination.'],
                 ['General Cargo Support', 'Flexible support for commercial goods, personal effects and other cargo.'],
             ] as [$heading, $description])

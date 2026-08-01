@@ -4,7 +4,7 @@
             <p class="text-sm font-black uppercase tracking-[0.2em] text-cyan-300">About Blue Pearl</p>
             <h1 class="mt-4 max-w-4xl text-4xl font-black tracking-tight sm:text-5xl">Logistics support centered on clarity and coordination.</h1>
             <p class="mt-6 max-w-3xl text-base leading-8 text-slate-300">
-                Blue Pearl Logistics helps businesses and individuals navigate customs clearance, freight movements, containers, vehicle importation and delivery.
+                Blue Pearl Logistics Limited is a Kenya-based company helping individuals, businesses and government institutions navigate customs clearance, freight movements, port and container handling, vehicle importation and delivery. We serve clients in Kenya and the DRC.
             </p>
         </div>
     </section>
