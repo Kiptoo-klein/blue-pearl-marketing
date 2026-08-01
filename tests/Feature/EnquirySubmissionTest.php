@@ -2,7 +2,9 @@
 
 namespace Tests\Feature;
 
+use App\Mail\QuoteEnquiryReceived;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 
 class EnquirySubmissionTest extends TestCase
@@ -11,6 +13,8 @@ class EnquirySubmissionTest extends TestCase
 
     public function test_enquiry_can_be_submitted_with_a_phone_number(): void
     {
+        Mail::fake();
+
         $this
             ->from(route('quote'))
             ->post(route('quote.store'), [
@@ -30,5 +34,12 @@ class EnquirySubmissionTest extends TestCase
             'service' => 'customs-clearance',
             'status' => 'new',
         ]);
+
+        Mail::assertSent(
+            QuoteEnquiryReceived::class,
+            fn (QuoteEnquiryReceived $mail): bool => $mail->hasTo(
+                config('company.email')
+            )
+        );
     }
 }

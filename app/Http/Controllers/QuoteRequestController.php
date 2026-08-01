@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\QuoteEnquiryReceived;
 use App\Models\QuoteRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
 
 class QuoteRequestController extends Controller
@@ -54,7 +56,11 @@ class QuoteRequestController extends Controller
 
         unset($validated['website']);
 
-        QuoteRequest::query()->create($validated);
+        $quoteRequest = QuoteRequest::query()->create($validated);
+
+        Mail::to(config('company.email'))->send(
+            new QuoteEnquiryReceived($quoteRequest)
+        );
 
         return back()->with(
             'success',

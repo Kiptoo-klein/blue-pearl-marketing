@@ -30,14 +30,18 @@
 
     <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur">
         <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-            <a href="{{ route('home') }}" class="flex items-center gap-3">
-                <span class="grid size-11 place-items-center rounded-2xl bg-slate-950 text-lg font-black text-cyan-300">
-                    BP
-                </span>
-                <span>
-                    <span class="block font-black text-slate-950">Blue Pearl</span>
-                    <span class="block text-[10px] font-bold uppercase tracking-[0.24em] text-slate-500">Logistics</span>
-                </span>
+            <a
+                href="{{ route('home') }}"
+                class="flex shrink-0 items-center"
+                aria-label="{{ config('company.name') }} home"
+            >
+                <img
+                    src="{{ asset('images/blue-pearl-logo.png') }}"
+                    alt="{{ config('company.name') }}"
+                    width="185"
+                    height="74"
+                    style="width: 185px; height: auto; max-width: 45vw; display: block;"
+                >
             </a>
 
             <nav class="hidden items-center gap-8 lg:flex">
