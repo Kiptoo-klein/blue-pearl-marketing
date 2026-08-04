@@ -5,6 +5,7 @@ namespace App\Mail;
 use App\Models\QuoteRequest;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
@@ -20,7 +21,17 @@ class QuoteEnquiryReceived extends Mailable
 
     public function envelope(): Envelope
     {
+        $replyTo = $this->quoteRequest->email
+            ? [
+                new Address(
+                    $this->quoteRequest->email,
+                    $this->quoteRequest->name,
+                ),
+            ]
+            : [];
+
         return new Envelope(
+            replyTo: $replyTo,
             subject: 'New website enquiry: '.Str::headline(
                 $this->quoteRequest->service
             ),

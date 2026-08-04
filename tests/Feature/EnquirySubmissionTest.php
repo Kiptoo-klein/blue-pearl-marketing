@@ -42,4 +42,31 @@ class EnquirySubmissionTest extends TestCase
             )
         );
     }
+
+    public function test_blue_pearl_can_reply_directly_to_the_customer(): void
+    {
+        Mail::fake();
+
+        $this
+            ->from(route('quote'))
+            ->post(route('quote.store'), [
+                'name' => 'Customer Name',
+                'phone' => '',
+                'email' => 'customer@example.com',
+                'service' => 'vehicle-importation',
+                'message' => 'I need help importing a vehicle.',
+                'website' => '',
+            ])
+            ->assertRedirect(route('quote'))
+            ->assertSessionHas('success');
+
+        Mail::assertSent(
+            QuoteEnquiryReceived::class,
+            fn (QuoteEnquiryReceived $mail): bool => $mail->hasTo(
+                config('company.email')
+            ) && $mail->hasReplyTo(
+                'customer@example.com'
+            )
+        );
+    }
 }
