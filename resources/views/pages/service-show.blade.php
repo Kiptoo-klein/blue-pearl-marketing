@@ -40,6 +40,7 @@
 
     <section class="bg-white py-20 sm:py-24">
         <div class="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[1fr_.8fr] lg:px-8">
+
             <div>
                 <p class="text-sm font-black uppercase tracking-[0.2em] text-cyan-700">
                     Service coverage
@@ -83,11 +84,13 @@
                     @endforeach
                 </div>
             </aside>
+
         </div>
     </section>
 
     <section class="bg-slate-100 py-20 sm:py-24">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
             <div class="max-w-3xl">
                 <p class="text-sm font-black uppercase tracking-[0.2em] text-cyan-700">
                     How it works
@@ -115,13 +118,16 @@
                     </article>
                 @endforeach
             </div>
+
         </div>
     </section>
 
     <section class="bg-white py-20 sm:py-24">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
             <div class="rounded-[2rem] bg-gradient-to-br from-cyan-50 to-white p-8 ring-1 ring-slate-200 sm:p-12">
                 <div class="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
+
                     <div>
                         <p class="text-sm font-black uppercase tracking-[0.2em] text-cyan-700">
                             Start your enquiry
@@ -143,8 +149,10 @@
                     >
                         Request a Quote
                     </a>
+
                 </div>
             </div>
+
         </div>
     </section>
 </x-layouts.marketing>

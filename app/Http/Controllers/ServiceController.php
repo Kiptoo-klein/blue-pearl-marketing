@@ -16,7 +16,7 @@ class ServiceController extends Controller
             404
         );
 
-        return view('pages.service', [
+        return view('pages.service-show', [
             'service' => $service,
             'details' => $details,
         ]);
