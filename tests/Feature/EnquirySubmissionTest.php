@@ -68,5 +68,36 @@ class EnquirySubmissionTest extends TestCase
                 'customer@example.com'
             )
         );
-    }
-}
+
+                    }
+                public function test_warehousing_packing_and_removals_enquiry_can_be_submitted(): void
+                {
+                    Mail::fake();
+
+                    $this
+                        ->from(route('quote'))
+                        ->post(route('quote.store'), [
+                            'name' => 'Warehouse Client',
+                            'phone' => '+254700000002',
+                            'email' => '',
+                            'service' => 'warehousing-packing-removals',
+                            'message' => 'I need warehousing and packing support.',
+                            'website' => '',
+                        ])
+                        ->assertRedirect(route('quote'))
+                        ->assertSessionHas('success');
+
+                    $this->assertDatabaseHas('quote_requests', [
+                        'name' => 'Warehouse Client',
+                        'service' => 'warehousing-packing-removals',
+                        'status' => 'new',
+                    ]);
+
+                    Mail::assertSent(
+                        QuoteEnquiryReceived::class,
+                        fn (QuoteEnquiryReceived $mail): bool => $mail->hasTo(
+                            config('company.email')
+                        )
+                    );
+                }
+      }

@@ -2,16 +2,16 @@
 
 return [
     'customs-clearance' => [
-        'name' => 'Customs Clearance',
-        'eyebrow' => 'Clearance support',
-        'summary' => 'Practical support with customs documentation, declarations, release procedures and shipment coordination.',
-        'intro' => 'Blue Pearl Logistics helps importers and exporters understand and complete the steps required to clear cargo through customs in Kenya.',
+        'name' => 'Customs Clearance & Compliance',
+        'eyebrow' => 'Clearance and compliance support',
+        'summary' => 'Practical support with customs documentation, declarations, compliance requirements, cargo release and shipment coordination.',
+        'intro' => 'Blue Pearl Logistics helps importers understand and complete the steps required to clear cargo through customs in Kenya.',
         'features' => [
-            'Import and export clearance support',
+            'Import clearance support',
             'Document review and requirement guidance',
             'Customs declaration coordination',
             'Cargo release follow-up',
-            'Communication throughout the clearance process',
+            'Customs compliance guidance',
             'Coordination with transport and delivery teams',
         ],
         'process' => [
@@ -34,22 +34,22 @@ return [
         ],
         'ideal_for' => [
             'Commercial importers',
-            'Exporters',
             'Small and medium businesses',
             'Individuals importing personal cargo',
+            'Businesses needing documentation and compliance support',
         ],
     ],
 
     'freight-forwarding' => [
-        'name' => 'Freight Forwarding',
+        'name' => 'Air & Sea Freight Forwarding',
         'eyebrow' => 'Cargo coordination',
-        'summary' => 'Coordination for sea and air cargo moving into or out of Kenya.',
-        'intro' => 'We support the movement of cargo by coordinating shipment information, documents, arrival details and onward logistics.',
+        'summary' => 'Coordination for cargo moving into Kenya by air and sea.',
+        'intro' => 'We support air and sea freight movements by coordinating shipment information, documents, arrival details and onward logistics.',
         'features' => [
             'Sea freight coordination',
             'Air freight coordination',
             'Import shipment support',
-            'Export shipment support',
+            'Shipment documentation coordination',
             'Port and terminal follow-up',
             'Destination and delivery coordination',
         ],
@@ -60,7 +60,7 @@ return [
             ],
             [
                 'Confirm the shipment plan',
-                'We review the mode, cargo details and timing requirements.',
+                'We review the transport mode, cargo details and timing requirements.',
             ],
             [
                 'Coordinate the movement',
@@ -74,32 +74,32 @@ return [
         'ideal_for' => [
             'Sea freight importers',
             'Air freight customers',
-            'Export businesses',
-            'Project and commercial cargo',
+            'Commercial cargo',
+            'Consolidated shipments',
         ],
     ],
 
     'container-handling' => [
-        'name' => 'Port & Container Handling',
+        'name' => 'Port, CFS & Container Handling',
         'eyebrow' => 'Port to destination',
-        'summary' => 'Port handling and support for FCL and LCL cargo from release through transport and empty-container return.',
-        'intro' => 'Blue Pearl Logistics helps coordinate containerized cargo after arrival, including release, transport, delivery and return requirements.',
+        'summary' => 'Port and CFS handling support for FCL and LCL cargo from release through transport and container return requirements.',
+        'intro' => 'Blue Pearl Logistics coordinates containerized and consolidated cargo through port and Container Freight Station processes, release, transport and delivery.',
         'features' => [
             'Full-container-load support',
             'Less-than-container-load support',
-            'Port release coordination',
+            'Port and CFS handling coordination',
             'Container transport planning',
             'Delivery follow-up',
             'Empty-container return coordination',
         ],
         'process' => [
             [
-                'Confirm container details',
-                'We collect the container number, size, cargo and arrival information.',
+                'Confirm cargo details',
+                'We collect the container or shipment details, cargo information and arrival information.',
             ],
             [
-                'Coordinate release',
-                'Clearance and port-release requirements are followed up.',
+                'Coordinate handling and release',
+                'Clearance, port and CFS requirements are followed up.',
             ],
             [
                 'Plan transport',
@@ -107,14 +107,131 @@ return [
             ],
             [
                 'Close the movement',
-                'Delivery and empty-container return requirements are completed.',
+                'Delivery and any applicable container return requirements are completed.',
             ],
         ],
         'ideal_for' => [
-            '20-foot containers',
-            '40-foot containers',
+            'Full container loads',
+            'Less-than-container loads',
             'Commercial cargo',
             'Consolidated shipments',
+        ],
+    ],
+
+    'warehousing-packing-removals' => [
+        'name' => 'Warehousing, Packing & Removals',
+        'eyebrow' => 'Storage and handling support',
+        'summary' => 'Practical warehousing, packing and removals support for goods requiring secure handling before onward movement.',
+        'intro' => 'Blue Pearl Logistics supports customers who need warehousing, packing or removals services as part of their wider logistics requirements.',
+        'features' => [
+            'Warehousing support',
+            'Cargo storage coordination',
+            'Packing support',
+            'Removals coordination',
+            'Cargo handling assistance',
+            'Onward transport coordination',
+        ],
+        'process' => [
+            [
+                'Review the requirement',
+                'We confirm the goods, quantity and handling or storage needs.',
+            ],
+            [
+                'Plan the handling',
+                'The appropriate warehousing, packing or removals approach is coordinated.',
+            ],
+            [
+                'Handle the cargo',
+                'Goods are prepared, stored or moved according to the agreed requirements.',
+            ],
+            [
+                'Coordinate onward movement',
+                'Transport or delivery can be arranged when required.',
+            ],
+        ],
+        'ideal_for' => [
+            'Commercial goods',
+            'Personal effects',
+            'Stored cargo',
+            'Goods requiring packing or removals support',
+        ],
+    ],
+
+    'general-cargo' => [
+        'name' => 'LCL, Break-Bulk & Project Cargo',
+        'eyebrow' => 'Flexible cargo solutions',
+        'summary' => 'Flexible logistics support for consolidated, break-bulk, project and specialized cargo.',
+        'intro' => 'We coordinate cargo that requires more specialized handling, including LCL consolidation, break-bulk shipments and project cargo.',
+        'features' => [
+            'LCL consolidation support',
+            'Break-bulk cargo handling',
+            'Project cargo coordination',
+            'Machinery and equipment support',
+            'Document guidance',
+            'Tailored movement coordination',
+        ],
+        'process' => [
+            [
+                'Describe the cargo',
+                'Share what is moving, the quantity and the available shipment details.',
+            ],
+            [
+                'Review the requirements',
+                'We identify the likely handling, clearance and transport needs.',
+            ],
+            [
+                'Build the plan',
+                'The relevant logistics services are combined into a practical movement plan.',
+            ],
+            [
+                'Coordinate completion',
+                'The cargo is handled, cleared and moved according to the agreed plan.',
+            ],
+        ],
+        'ideal_for' => [
+            'LCL shipments',
+            'Break-bulk cargo',
+            'Project materials',
+            'Machinery and equipment',
+        ],
+    ],
+
+    'transport-delivery' => [
+        'name' => 'Transport & Door-to-Door Delivery',
+        'eyebrow' => 'Onward logistics',
+        'summary' => 'Cargo movement from the port, CFS, terminal or warehouse to the agreed destination.',
+        'intro' => 'We coordinate trucking and delivery for containers, vehicles and general cargo after release.',
+        'features' => [
+            'Truck coordination',
+            'Port, CFS and terminal collection',
+            'Container delivery',
+            'Vehicle delivery',
+            'Warehouse and business delivery',
+            'Door-to-door delivery coordination',
+        ],
+        'process' => [
+            [
+                'Confirm the cargo',
+                'We review the cargo type, size and collection point.',
+            ],
+            [
+                'Confirm the destination',
+                'The delivery address, access and timing are checked.',
+            ],
+            [
+                'Dispatch transport',
+                'Suitable transport is coordinated for the movement.',
+            ],
+            [
+                'Complete delivery',
+                'Delivery is followed through to the agreed destination.',
+            ],
+        ],
+        'ideal_for' => [
+            'Containers',
+            'Vehicles',
+            'Commercial goods',
+            'Warehouse deliveries',
         ],
     ],
 
@@ -155,84 +272,6 @@ return [
             'Vehicle dealers',
             'Commercial fleets',
             'Returning residents',
-        ],
-    ],
-
-    'transport-delivery' => [
-        'name' => 'Transport and Delivery',
-        'eyebrow' => 'Final-mile logistics',
-        'summary' => 'Cargo movement from the port, terminal or warehouse to the final destination.',
-        'intro' => 'We coordinate suitable transport for containers, vehicles and general cargo after release.',
-        'features' => [
-            'Truck coordination',
-            'Port and terminal collection',
-            'Container delivery',
-            'Vehicle delivery',
-            'Warehouse and business delivery',
-            'Movement and delivery updates',
-        ],
-        'process' => [
-            [
-                'Confirm the cargo',
-                'We review the cargo type, size and collection point.',
-            ],
-            [
-                'Confirm the destination',
-                'The delivery address, access and timing are checked.',
-            ],
-            [
-                'Dispatch transport',
-                'A suitable vehicle is coordinated for the movement.',
-            ],
-            [
-                'Complete delivery',
-                'Delivery is followed through to the agreed destination.',
-            ],
-        ],
-        'ideal_for' => [
-            'Containers',
-            'Vehicles',
-            'Commercial goods',
-            'Warehouse deliveries',
-        ],
-    ],
-
-    'general-cargo' => [
-        'name' => 'General Cargo Support',
-        'eyebrow' => 'Flexible cargo support',
-        'summary' => 'Flexible logistics assistance for commercial goods, personal effects and specialized cargo.',
-        'intro' => 'Not every shipment fits one category. We review the cargo and recommend the right clearance, freight or delivery approach.',
-        'features' => [
-            'Commercial cargo support',
-            'Personal effects',
-            'Machinery and equipment',
-            'Project cargo',
-            'Document guidance',
-            'Tailored movement coordination',
-        ],
-        'process' => [
-            [
-                'Describe the cargo',
-                'Share what is moving, the quantity and the available shipment details.',
-            ],
-            [
-                'Review the requirements',
-                'We identify the likely clearance and transport needs.',
-            ],
-            [
-                'Build the plan',
-                'The relevant services are combined into one practical approach.',
-            ],
-            [
-                'Coordinate completion',
-                'The cargo is cleared, moved or delivered according to the plan.',
-            ],
-        ],
-        'ideal_for' => [
-            'Machinery and equipment',
-            'Personal effects',
-            'Project materials',
-            'Specialized commercial cargo',
         ],
     ],
 ];

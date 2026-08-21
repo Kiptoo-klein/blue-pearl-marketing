@@ -13,6 +13,16 @@ class QuoteRequestController extends Controller
 {
     public function store(Request $request): RedirectResponse
     {
+        $serviceSlugs = collect(config('services'))
+            ->filter(
+                fn ($service) =>
+                    is_array($service)
+                    && isset($service['name'])
+            )
+            ->keys()
+            ->push('other')
+            ->all();
+
         $validated = $request->validate([
             'name' => [
                 'required',
@@ -33,15 +43,7 @@ class QuoteRequestController extends Controller
             ],
             'service' => [
                 'required',
-                Rule::in([
-                    'customs-clearance',
-                    'freight-forwarding',
-                    'container-handling',
-                    'vehicle-importation',
-                    'transport-delivery',
-                    'general-cargo',
-                    'other',
-                ]),
+                Rule::in($serviceSlugs),
             ],
             'message' => [
                 'required',
