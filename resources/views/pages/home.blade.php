@@ -8,7 +8,7 @@
             <div class="absolute right-0 top-0 size-96 rounded-full bg-blue-700 blur-3xl"></div>
         </div>
 
-        <div class="relative mx-auto grid max-w-7xl gap-14 px-4 py-20 sm:px-6 sm:py-28 lg:grid-cols-[1.08fr_.92fr] lg:items-center lg:px-8 lg:py-32">
+        <div class="relative mx-auto grid max-w-7xl gap-14 px-4 py-20 sm:px-6 sm:py-28 lg:grid-cols-[.92fr_1.08fr] lg:items-center lg:px-8 lg:py-32">
             <div>
                 <p class="inline-flex rounded-full border border-cyan-300/30 bg-cyan-300/10 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-cyan-200">
                     Customs clearance · Freight · Logistics
@@ -45,35 +45,16 @@
                 </div>
             </div>
 
-            <div class="rounded-[2rem] border border-white/10 bg-white/10 p-4 shadow-2xl backdrop-blur">
-                <div class="rounded-[1.5rem] bg-white p-6 text-slate-900 sm:p-8">
-                    <p class="text-xs font-black uppercase tracking-[0.18em] text-cyan-700">
-                        How it works
-                    </p>
-
-                    <h2 class="mt-2 text-2xl font-black">
-                        One reliable logistics partner
-                    </h2>
-
-                    <div class="mt-7 space-y-4">
-                        @foreach ([
-                            ['01', 'Share your shipment details'],
-                            ['02', 'Receive guidance and a quotation'],
-                            ['03', 'We coordinate clearance and movement'],
-                            ['04', 'Cargo reaches its destination'],
-                        ] as [$number, $label])
-                            <div class="flex items-center gap-4 rounded-2xl bg-slate-50 p-4">
-                                <span class="grid size-10 place-items-center rounded-full bg-slate-950 text-xs font-black text-cyan-300">
-                                    {{ $number }}
-                                </span>
-
-                                <p class="text-sm font-black">
-                                    {{ $label }}
-                                </p>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
+            <div class="rounded-[2rem] border border-white/10 bg-white/10 p-3 shadow-2xl backdrop-blur">
+                <img
+                    src="{{ asset('images/logistics/home-logistics-hero.webp') }}"
+                    alt="Container ship and port logistics operations"
+                    width="1400"
+                    height="1050"
+                    fetchpriority="high"
+                    decoding="async"
+                    class="aspect-[4/3] w-full rounded-[1.5rem] object-cover"
+                >
             </div>
         </div>
     </section>

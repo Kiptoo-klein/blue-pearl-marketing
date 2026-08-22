@@ -110,34 +110,74 @@
                 </span>
             </nav>
 
-            <p class="mt-8 text-sm font-black uppercase tracking-[0.2em] text-cyan-300">
-                {{ $details['eyebrow'] }}
-            </p>
-
-            <h1 class="mt-4 max-w-4xl text-4xl font-black tracking-tight sm:text-5xl">
-                {{ $details['name'] }}
-            </h1>
-
-            <p class="mt-6 max-w-3xl text-base leading-8 text-slate-300">
-                {{ $details['intro'] }}
-            </p>
-
-            <div class="mt-9 flex flex-col gap-3 sm:flex-row">
-                <a
-                    href="{{ route('quote', ['service' => $service]) }}"
-                    class="rounded-full bg-cyan-500 px-7 py-3.5 text-center text-sm font-black text-slate-950 transition hover:bg-cyan-300"
+            <div
+                @class([
+                    'mt-8 grid gap-10 lg:items-center',
+                    'lg:grid-cols-[1fr_.72fr]' => isset($details['image']),
+                ])
+            >
+                <div
+                    @class([
+                        'lg:order-2' =>
+                            isset($details['image'])
+                            && ($details['image_side'] ?? 'right') === 'left',
+                        'lg:order-1' =>
+                            ! isset($details['image'])
+                            || ($details['image_side'] ?? 'right') !== 'left',
+                    ])
                 >
-                    Request This Service
-                </a>
+                    <p class="text-sm font-black uppercase tracking-[0.2em] text-cyan-300">
+                        {{ $details['eyebrow'] }}
+                    </p>
 
-                <a
-                    href="https://wa.me/{{ config('company.whatsapp') }}"
-                    target="_blank"
-                    rel="noopener"
-                    class="rounded-full border border-white/20 px-7 py-3.5 text-center text-sm font-black text-white transition hover:bg-white/10"
-                >
-                    Ask on WhatsApp
-                </a>
+                    <h1 class="mt-4 max-w-4xl text-4xl font-black tracking-tight sm:text-5xl">
+                        {{ $details['name'] }}
+                    </h1>
+
+                    <p class="mt-6 max-w-3xl text-base leading-8 text-slate-300">
+                        {{ $details['intro'] }}
+                    </p>
+
+                    <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+                        <a
+                            href="{{ route('quote', ['service' => $service]) }}"
+                            class="rounded-full bg-cyan-500 px-7 py-3.5 text-center text-sm font-black text-slate-950 transition hover:bg-cyan-300"
+                        >
+                            Request This Service
+                        </a>
+
+                        <a
+                            href="https://wa.me/{{ config('company.whatsapp') }}"
+                            target="_blank"
+                            rel="noopener"
+                            class="rounded-full border border-white/20 px-7 py-3.5 text-center text-sm font-black text-white transition hover:bg-white/10"
+                        >
+                            Ask on WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                @if (isset($details['image']))
+                    <div
+                        @class([
+                            'overflow-hidden rounded-[2rem] border border-white/10 bg-white/10 p-3 shadow-2xl',
+                            'lg:order-1' =>
+                                ($details['image_side'] ?? 'right') === 'left',
+                            'lg:order-2' =>
+                                ($details['image_side'] ?? 'right') !== 'left',
+                        ])
+                    >
+                        <img
+                            src="{{ asset($details['image']) }}"
+                            alt="{{ $details['image_alt'] ?? '' }}"
+                            width="1200"
+                            height="900"
+                            fetchpriority="high"
+                            decoding="async"
+                            class="aspect-[4/3] w-full rounded-[1.5rem] object-cover"
+                        >
+                    </div>
+                @endif
             </div>
         </div>
     </section>

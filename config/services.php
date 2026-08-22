@@ -8,6 +8,9 @@ return [
         'eyebrow' => 'Clearance and compliance support',
         'summary' => 'Practical support with customs documentation, declarations, compliance requirements, cargo release and shipment coordination.',
         'intro' => 'Blue Pearl Logistics helps importers understand and complete the steps required to clear cargo through customs in Kenya.',
+        'image' => 'images/logistics/customs-clearance.webp',
+        'image_alt' => 'Container terminal and cargo clearance operations',
+        'image_side' => 'left',
         'features' => [
             'Import clearance support',
             'Document review and requirement guidance',
@@ -54,6 +57,9 @@ return [
         'eyebrow' => 'Cargo coordination',
         'summary' => 'Coordination for cargo moving into Kenya by air and sea.',
         'intro' => 'We support air and sea freight movements by coordinating shipment information, documents, arrival details and onward logistics.',
+        'image' => 'images/logistics/freight-forwarding.webp',
+        'image_alt' => 'Freight transport and shipping operations',
+        'image_side' => 'right',
         'features' => [
             'Sea freight coordination',
             'Air freight coordination',
@@ -100,6 +106,9 @@ return [
         'eyebrow' => 'Port to destination',
         'summary' => 'Port and CFS handling support for FCL and LCL cargo from release through transport and container return requirements.',
         'intro' => 'Blue Pearl Logistics coordinates containerized and consolidated cargo through port and Container Freight Station processes, release, transport and delivery.',
+        'image' => 'images/logistics/container-handling.webp',
+        'image_alt' => 'Container handling and port cargo operations',
+        'image_side' => 'left',
         'features' => [
             'Full-container-load support',
             'Less-than-container-load support',
@@ -146,6 +155,9 @@ return [
         'eyebrow' => 'Storage and handling support',
         'summary' => 'Practical warehousing, packing and removals support for goods requiring secure handling before onward movement.',
         'intro' => 'Blue Pearl Logistics supports customers who need warehousing, packing or removals services as part of their wider logistics requirements.',
+        'image' => 'images/logistics/warehousing.webp',
+        'image_alt' => 'Warehouse storage and cargo handling operations',
+        'image_side' => 'left',
         'features' => [
             'Warehousing support',
             'Cargo storage coordination',
@@ -192,6 +204,9 @@ return [
         'eyebrow' => 'Flexible cargo solutions',
         'summary' => 'Flexible logistics support for consolidated, break-bulk, project and specialized cargo.',
         'intro' => 'We coordinate cargo that requires more specialized handling, including LCL consolidation, break-bulk shipments and project cargo.',
+        'image' => 'images/logistics/project-cargo.webp',
+        'image_alt' => 'Ship cranes handling specialized project cargo',
+        'image_side' => 'right',
         'features' => [
             'LCL consolidation support',
             'Break-bulk cargo handling',
@@ -238,6 +253,9 @@ return [
         'eyebrow' => 'Onward logistics',
         'summary' => 'Cargo movement from the port, CFS, terminal or warehouse to the agreed destination.',
         'intro' => 'We coordinate trucking and delivery for containers, vehicles and general cargo after release.',
+        'image' => 'images/logistics/transport-delivery.webp',
+        'image_alt' => 'Container truck transporting cargo by road',
+        'image_side' => 'left',
         'features' => [
             'Truck coordination',
             'Port, CFS and terminal collection',
@@ -284,6 +302,9 @@ return [
         'eyebrow' => 'Vehicle clearance',
         'summary' => 'Guidance and coordination for imported vehicles arriving through Kenyan ports.',
         'intro' => 'We help individuals and businesses understand the clearance, release and delivery process for imported vehicles.',
+        'image' => 'images/logistics/vehicle-importation.webp',
+        'image_alt' => 'Imported vehicles and vehicle logistics operations',
+        'image_side' => 'right',
         'features' => [
             'Import-document review',
             'Vehicle clearance coordination',
