@@ -143,7 +143,9 @@ class MarketingWebsiteTest extends TestCase
             .' | '
             .config('seo.site_name');
 
-        $expectedDescription = $details['seo_description']
+        $expectedDescription = $details[
+            'seo_description'
+        ]
             ?? $details['summary'];
 
         $expectedUrl = route(
@@ -208,6 +210,100 @@ class MarketingWebsiteTest extends TestCase
                 'rel="canonical" href="'
                 .route('quote')
                 .'?service=vehicle-importation"',
+                false
+            );
+    }
+
+    public function test_homepage_has_organization_structured_data(): void
+    {
+        $response = $this
+            ->get(route('home'))
+            ->assertOk();
+
+        $response
+            ->assertSee(
+                'type="application/ld+json"',
+                false
+            )
+            ->assertSee(
+                '"@context":"https://schema.org"',
+                false
+            )
+            ->assertSee(
+                '"@type":"Organization"',
+                false
+            )
+            ->assertSee(
+                '"@id":"'
+                .route('home')
+                .'#organization"',
+                false
+            )
+            ->assertSee(
+                '"url":"'
+                .route('home')
+                .'"',
+                false
+            )
+            ->assertSee(
+                '"telephone":"'
+                .config('company.phone')
+                .'"',
+                false
+            )
+            ->assertSee(
+                '"email":"'
+                .config('company.email')
+                .'"',
+                false
+            );
+    }
+
+    public function test_service_page_has_service_structured_data(): void
+    {
+        $service = 'customs-clearance';
+
+        $url = route(
+            'services.show',
+            $service
+        );
+
+        $response = $this
+            ->get($url)
+            ->assertOk();
+
+        $response
+            ->assertSee(
+                '"@type":"Service"',
+                false
+            )
+            ->assertSee(
+                '"@id":"'
+                .$url
+                .'#service"',
+                false
+            )
+            ->assertSee(
+                '"url":"'
+                .$url
+                .'"',
+                false
+            )
+            ->assertSee(
+                '"provider":{"@id":"'
+                .route('home')
+                .'#organization"}',
+                false
+            );
+    }
+
+    public function test_non_service_pages_do_not_have_service_schema(): void
+    {
+        $this
+            ->get(route('home'))
+            ->assertOk()
+            ->assertDontSee(
+                '"@type":"Service"',
                 false
             );
     }

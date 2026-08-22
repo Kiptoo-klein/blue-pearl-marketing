@@ -29,6 +29,119 @@
             : $pageTitleBase.' | '.$seoSiteName;
 
         $canonicalUrl = request()->url();
+
+        /*
+        |--------------------------------------------------------------------------
+        | Structured Data
+        |--------------------------------------------------------------------------
+        */
+
+        $organizationId = route('home').'#organization';
+
+        $organizationSchema = [
+            '@type' => 'Organization',
+            '@id' => $organizationId,
+            'name' => config('company.name'),
+            'url' => route('home'),
+            'logo' => asset(
+                'images/blue-pearl-logo-transparent.png'
+            ),
+            'description' => config(
+                'seo.pages.home.description'
+            ),
+            'email' => config('company.email'),
+            'telephone' => config('company.phone'),
+            'slogan' => config('company.tagline'),
+
+            'address' => [
+                '@type' => 'PostalAddress',
+                'streetAddress' => config(
+                    'company.address'
+                ),
+                'addressLocality' => 'Nairobi',
+                'addressCountry' => 'KE',
+            ],
+
+            'areaServed' => [
+                [
+                    '@type' => 'Country',
+                    'name' => 'Kenya',
+                ],
+                [
+                    '@type' => 'Country',
+                    'name' => 'Democratic Republic of the Congo',
+                ],
+            ],
+
+            'contactPoint' => [
+                '@type' => 'ContactPoint',
+                'telephone' => config(
+                    'company.phone'
+                ),
+                'email' => config(
+                    'company.email'
+                ),
+                'contactType' => 'customer service',
+            ],
+        ];
+
+        $schemaGraph = [
+            $organizationSchema,
+        ];
+
+        /*
+        |--------------------------------------------------------------------------
+        | Service Structured Data
+        |--------------------------------------------------------------------------
+        */
+
+        if (request()->routeIs('services.show')) {
+            $serviceSlug = request()->route(
+                'service'
+            );
+
+            $serviceDetails = config(
+                "services.{$serviceSlug}"
+            );
+
+            if (
+                is_array($serviceDetails)
+                && isset($serviceDetails['name'])
+            ) {
+                $schemaGraph[] = [
+                    '@type' => 'Service',
+                    '@id' => $canonicalUrl.'#service',
+
+                    'name' => $serviceDetails['name'],
+
+                    'serviceType' => $serviceDetails[
+                        'name'
+                    ],
+
+                    'description' => $serviceDetails[
+                        'seo_description'
+                    ]
+                        ?? $serviceDetails['summary']
+                        ?? '',
+
+                    'url' => $canonicalUrl,
+
+                    'provider' => [
+                        '@id' => $organizationId,
+                    ],
+
+                    'areaServed' => [
+                        '@type' => 'Country',
+                        'name' => 'Kenya',
+                    ],
+                ];
+            }
+        }
+
+        $structuredData = [
+            '@context' => 'https://schema.org',
+            '@graph' => $schemaGraph,
+        ];
     @endphp
 
     <title>{{ $pageTitle }}</title>
@@ -98,6 +211,19 @@
         content="{{ $pageDescription }}"
     >
 
+    {{-- Schema.org structured data --}}
+    <script type="application/ld+json">
+        {!! json_encode(
+            $structuredData,
+            JSON_UNESCAPED_SLASHES
+            | JSON_UNESCAPED_UNICODE
+            | JSON_HEX_TAG
+            | JSON_HEX_AMP
+            | JSON_HEX_APOS
+            | JSON_HEX_QUOT
+        ) !!}
+    </script>
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -162,13 +288,17 @@
                         $active = request()->routeIs($route)
                             || (
                                 $route === 'services'
-                                && request()->routeIs('services.*')
+                                && request()->routeIs(
+                                    'services.*'
+                                )
                             );
                     @endphp
 
                     <a
                         href="{{ route($route) }}"
-                        @if ($active) aria-current="page" @endif
+                        @if ($active)
+                            aria-current="page"
+                        @endif
                         class="text-sm font-bold transition
                             {{ $active
                                 ? 'text-cyan-700'
