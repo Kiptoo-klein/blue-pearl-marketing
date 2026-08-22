@@ -61,7 +61,10 @@
                         <summary class="flex cursor-pointer list-none items-center justify-between gap-5 font-black text-slate-950">
                             <span>{{ $question }}</span>
 
-                            <span class="text-xl text-cyan-700 transition group-open:rotate-45">
+                            <span
+                                aria-hidden="true"
+                                class="text-xl text-cyan-700 transition group-open:rotate-45"
+                            >
                                 +
                             </span>
                         </summary>
