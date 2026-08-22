@@ -558,9 +558,9 @@
 
             <div>
 
-                <h3 class="font-black text-white">
+                <h2 class="font-black text-white">
                     Quick Links
-                </h3>
+                </h2>
 
                 <div class="mt-4 grid gap-3 text-sm">
 
@@ -605,9 +605,9 @@
 
             <div>
 
-                <h3 class="font-black text-white">
+                <h2 class="font-black text-white">
                     Contact
-                </h3>
+                </h2>
 
                 <div class="mt-4 grid gap-3 text-sm text-slate-400">
 
