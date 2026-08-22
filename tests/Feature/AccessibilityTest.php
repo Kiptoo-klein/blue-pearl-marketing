@@ -111,6 +111,66 @@ class AccessibilityTest extends TestCase
             );
     }
 
+    public function test_quote_validation_errors_are_connected_to_their_fields(): void
+    {
+        $response = $this
+            ->from(route('quote'))
+            ->followingRedirects()
+            ->post(route('quote.store'), [
+                'name' => '',
+                'phone' => '',
+                'email' => '',
+                'service' => '',
+                'message' => '',
+                'website' => '',
+            ])
+            ->assertOk();
+
+        $content = $response->getContent();
+
+        foreach ([
+            'name',
+            'phone',
+            'email',
+            'service',
+            'message',
+        ] as $field) {
+            $this->assertStringContainsString(
+                'id="'.$field.'-error"',
+                $content
+            );
+
+            $this->assertStringContainsString(
+                'aria-describedby="'
+                .(
+                    $field === 'phone'
+                    || $field === 'email'
+                        ? 'contact-help '
+                        : ''
+                )
+                .$field
+                .'-error"',
+                $content
+            );
+        }
+
+        $this->assertSame(
+            5,
+            substr_count(
+                $content,
+                'aria-invalid="true"'
+            )
+        );
+
+        $this->assertSame(
+            5,
+            substr_count(
+                $content,
+                'role="alert"'
+            )
+        );
+    }
+
     public function test_faq_decorative_icons_are_hidden_from_assistive_technology(): void
     {
         $response = $this
