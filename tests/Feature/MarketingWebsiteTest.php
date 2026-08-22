@@ -307,4 +307,103 @@ class MarketingWebsiteTest extends TestCase
                 false
             );
     }
+
+    public function test_homepage_has_social_preview_metadata(): void
+    {
+        $socialImage = asset(
+            'images/blue-pearl-social-preview.png'
+        );
+
+        $response = $this
+            ->get(route('home'))
+            ->assertOk();
+
+        $response
+            ->assertSee(
+                'property="og:image"',
+                false
+            )
+            ->assertSee(
+                'content="'.$socialImage.'"',
+                false
+            )
+            ->assertSee(
+                'property="og:image:width"',
+                false
+            )
+            ->assertSee(
+                'content="1200"',
+                false
+            )
+            ->assertSee(
+                'property="og:image:height"',
+                false
+            )
+            ->assertSee(
+                'content="630"',
+                false
+            )
+            ->assertSee(
+                'name="twitter:card"',
+                false
+            )
+            ->assertSee(
+                'content="summary_large_image"',
+                false
+            )
+            ->assertSee(
+                'name="twitter:image"',
+                false
+            );
+    }
+
+    public function test_brand_assets_exist_and_are_valid(): void
+    {
+        $favicon = public_path(
+            'favicon.ico'
+        );
+
+        $logo = public_path(
+            'images/blue-pearl-logo-transparent.png'
+        );
+
+        $socialImage = public_path(
+            'images/blue-pearl-social-preview.png'
+        );
+
+        $this->assertFileExists($favicon);
+        $this->assertFileExists($logo);
+        $this->assertFileExists($socialImage);
+
+        $this->assertGreaterThan(
+            0,
+            filesize($favicon)
+        );
+
+        $this->assertGreaterThan(
+            0,
+            filesize($socialImage)
+        );
+
+        $dimensions = getimagesize(
+            $socialImage
+        );
+
+        $this->assertIsArray($dimensions);
+
+        $this->assertSame(
+            1200,
+            $dimensions[0]
+        );
+
+        $this->assertSame(
+            630,
+            $dimensions[1]
+        );
+
+        $this->assertSame(
+            'image/png',
+            $dimensions['mime']
+        );
+    }
 }

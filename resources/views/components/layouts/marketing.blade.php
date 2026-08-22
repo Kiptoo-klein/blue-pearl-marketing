@@ -30,6 +30,10 @@
 
         $canonicalUrl = request()->url();
 
+        $socialImageUrl = asset(
+            'images/blue-pearl-social-preview.png'
+        );
+
         /*
         |--------------------------------------------------------------------------
         | Structured Data
@@ -43,22 +47,36 @@
             '@id' => $organizationId,
             'name' => config('company.name'),
             'url' => route('home'),
+
             'logo' => asset(
                 'images/blue-pearl-logo-transparent.png'
             ),
+
+            'image' => $socialImageUrl,
+
             'description' => config(
                 'seo.pages.home.description'
             ),
+
             'email' => config('company.email'),
-            'telephone' => config('company.phone'),
-            'slogan' => config('company.tagline'),
+
+            'telephone' => config(
+                'company.phone'
+            ),
+
+            'slogan' => config(
+                'company.tagline'
+            ),
 
             'address' => [
                 '@type' => 'PostalAddress',
+
                 'streetAddress' => config(
                     'company.address'
                 ),
+
                 'addressLocality' => 'Nairobi',
+
                 'addressCountry' => 'KE',
             ],
 
@@ -75,12 +93,15 @@
 
             'contactPoint' => [
                 '@type' => 'ContactPoint',
+
                 'telephone' => config(
                     'company.phone'
                 ),
+
                 'email' => config(
                     'company.email'
                 ),
+
                 'contactType' => 'customer service',
             ],
         ];
@@ -110,9 +131,13 @@
             ) {
                 $schemaGraph[] = [
                     '@type' => 'Service',
-                    '@id' => $canonicalUrl.'#service',
 
-                    'name' => $serviceDetails['name'],
+                    '@id' => $canonicalUrl
+                        .'#service',
+
+                    'name' => $serviceDetails[
+                        'name'
+                    ],
 
                     'serviceType' => $serviceDetails[
                         'name'
@@ -164,6 +189,13 @@
         href="{{ $canonicalUrl }}"
     >
 
+    {{-- Site icon --}}
+    <link
+        rel="icon"
+        href="{{ asset('favicon.ico') }}"
+        sizes="any"
+    >
+
     {{-- Open Graph --}}
     <meta
         property="og:type"
@@ -195,10 +227,40 @@
         content="{{ $canonicalUrl }}"
     >
 
+    <meta
+        property="og:image"
+        content="{{ $socialImageUrl }}"
+    >
+
+    <meta
+        property="og:image:secure_url"
+        content="{{ $socialImageUrl }}"
+    >
+
+    <meta
+        property="og:image:type"
+        content="image/png"
+    >
+
+    <meta
+        property="og:image:width"
+        content="1200"
+    >
+
+    <meta
+        property="og:image:height"
+        content="630"
+    >
+
+    <meta
+        property="og:image:alt"
+        content="{{ config('company.name') }} — Customs Clearance and Logistics"
+    >
+
     {{-- Twitter / X --}}
     <meta
         name="twitter:card"
-        content="summary"
+        content="summary_large_image"
     >
 
     <meta
@@ -209,6 +271,16 @@
     <meta
         name="twitter:description"
         content="{{ $pageDescription }}"
+    >
+
+    <meta
+        name="twitter:image"
+        content="{{ $socialImageUrl }}"
+    >
+
+    <meta
+        name="twitter:image:alt"
+        content="{{ config('company.name') }} — Customs Clearance and Logistics"
     >
 
     {{-- Schema.org structured data --}}
@@ -224,7 +296,10 @@
         ) !!}
     </script>
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite([
+        'resources/css/app.css',
+        'resources/js/app.js'
+    ])
 </head>
 
 <body class="min-h-screen bg-slate-50 text-slate-900 antialiased">
@@ -238,6 +313,7 @@
             </p>
 
             <div class="flex gap-4">
+
                 <a
                     href="tel:{{ config('company.phone_href') }}"
                     class="hover:text-cyan-300"
@@ -251,6 +327,7 @@
                 >
                     {{ config('company.email') }}
                 </a>
+
             </div>
 
         </div>
@@ -258,6 +335,7 @@
 
     {{-- Main navigation --}}
     <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur">
+
         <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 
             <a
@@ -276,6 +354,7 @@
 
             {{-- Desktop navigation --}}
             <nav class="hidden items-center gap-8 lg:flex">
+
                 @foreach ([
                     'home' => 'Home',
                     'about' => 'About',
@@ -285,7 +364,9 @@
                 ] as $route => $label)
 
                     @php
-                        $active = request()->routeIs($route)
+                        $active = request()->routeIs(
+                            $route
+                        )
                             || (
                                 $route === 'services'
                                 && request()->routeIs(
@@ -309,6 +390,7 @@
                     </a>
 
                 @endforeach
+
             </nav>
 
             {{-- Desktop actions --}}
@@ -384,9 +466,11 @@
                     </a>
 
                 </nav>
+
             </details>
 
         </div>
+
     </header>
 
     {{-- Page content --}}
@@ -396,9 +480,11 @@
 
     {{-- Global CTA --}}
     <section class="bg-cyan-600 text-white">
+
         <div class="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-10 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
 
             <div>
+
                 <p class="text-xs font-black uppercase tracking-[0.2em] text-cyan-100">
                     Move your cargo with confidence
                 </p>
@@ -406,6 +492,7 @@
                 <h2 class="mt-2 text-2xl font-black sm:text-3xl">
                     Tell us what you need moved, cleared or handled.
                 </h2>
+
             </div>
 
             <a
@@ -416,6 +503,7 @@
             </a>
 
         </div>
+
     </section>
 
     {{-- Footer --}}
@@ -520,7 +608,9 @@
         </div>
 
         <div class="border-t border-white/10 px-4 py-5 text-center text-xs text-slate-500">
-            © {{ now()->year }} {{ config('company.name') }}. All rights reserved.
+            © {{ now()->year }}
+            {{ config('company.name') }}.
+            All rights reserved.
         </div>
 
     </footer>
