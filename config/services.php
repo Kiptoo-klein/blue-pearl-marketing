@@ -208,7 +208,7 @@ return [
 
     'transport-delivery' => [
         'name' => 'Transport & Door-to-Door Delivery',
-        'seo_title' => 'Cargo Transport & Door-to-Door Delivery in Kenya',
+        'seo_title' => 'Cargo Transport & Delivery in Kenya',
         'seo_description' => 'Cargo transport and door-to-door delivery coordination in Kenya for containers, vehicles, commercial goods and warehouse deliveries.',
         'eyebrow' => 'Onward logistics',
         'summary' => 'Cargo movement from the port, CFS, terminal or warehouse to the agreed destination.',
@@ -249,7 +249,7 @@ return [
 
     'vehicle-importation' => [
         'name' => 'Vehicle Importation',
-        'seo_title' => 'Vehicle Importation & Clearance Services in Kenya',
+        'seo_title' => 'Vehicle Importation & Clearance in Kenya',
         'seo_description' => 'Vehicle importation support in Kenya covering document review, customs clearance coordination, port release, registration assistance and delivery planning.',
         'eyebrow' => 'Vehicle clearance',
         'summary' => 'Guidance and coordination for imported vehicles arriving through Kenyan ports.',
