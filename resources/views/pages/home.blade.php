@@ -128,6 +128,7 @@
                         <div class="mt-5 flex flex-wrap gap-x-5 gap-y-2">
                             <a
                                 href="{{ route('services.show', $slug) }}"
+                                aria-label="View {{ $service['name'] }} service"
                                 class="text-sm font-black text-cyan-700 hover:text-cyan-900"
                             >
                                 View service →
