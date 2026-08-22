@@ -112,6 +112,34 @@
 
         /*
         |--------------------------------------------------------------------------
+        | Website Structured Data
+        |--------------------------------------------------------------------------
+        */
+
+        if (request()->routeIs('home')) {
+            $schemaGraph[] = [
+                '@type' => 'WebSite',
+
+                '@id' => route('home').'#website',
+
+                'name' => config(
+                    'seo.site_name'
+                ),
+
+                'alternateName' => config(
+                    'company.name'
+                ),
+
+                'url' => route('home'),
+
+                'publisher' => [
+                    '@id' => $organizationId,
+                ],
+            ];
+        }
+
+        /*
+        |--------------------------------------------------------------------------
         | Service Structured Data
         |--------------------------------------------------------------------------
         */
