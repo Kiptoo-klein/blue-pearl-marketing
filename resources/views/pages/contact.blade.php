@@ -5,14 +5,20 @@
     <section class="bg-slate-950 py-20 text-white sm:py-24">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <p class="text-sm font-black uppercase tracking-[0.2em] text-cyan-300">
-                Contact us
+                Contact Blue Pearl Logistics
             </p>
 
             <h1 class="mt-4 max-w-4xl text-4xl font-black tracking-tight sm:text-5xl">
-                Start with a call, message or enquiry.
+                Talk to us about your customs or logistics requirements.
             </h1>
 
-            <p class="mt-5 text-sm font-bold text-slate-300 sm:text-base">
+            <p class="mt-6 max-w-3xl text-base leading-8 text-slate-300">
+                Contact us about customs clearance, freight forwarding,
+                container handling, warehousing, vehicle importation, cargo
+                transport or other logistics support.
+            </p>
+
+            <p class="mt-5 text-sm font-bold text-cyan-300 sm:text-base">
                 {{ config('company.tagline') }}
             </p>
         </div>
@@ -81,6 +87,41 @@
                     @endif
                 </article>
             @endforeach
+        </div>
+    </section>
+
+    <section class="bg-slate-100 py-20 sm:py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+            <p class="text-sm font-black uppercase tracking-[0.2em] text-cyan-700">
+                Find the right service
+            </p>
+
+            <h2 class="mt-4 max-w-3xl text-3xl font-black text-slate-950">
+                Not sure which logistics service you need?
+            </h2>
+
+            <p class="mt-4 max-w-3xl text-sm leading-7 text-slate-600">
+                Explore our logistics services first, or send the shipment
+                details and we can help identify the relevant support.
+            </p>
+
+            <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+                <a
+                    href="{{ route('services') }}"
+                    class="rounded-full bg-slate-950 px-6 py-3 text-center text-sm font-black text-white hover:bg-cyan-700"
+                >
+                    Explore Our Services
+                </a>
+
+                <a
+                    href="{{ route('quote') }}"
+                    class="rounded-full border border-slate-300 bg-white px-6 py-3 text-center text-sm font-black text-slate-800 hover:border-cyan-500 hover:text-cyan-700"
+                >
+                    Request a Quote
+                </a>
+            </div>
+
         </div>
     </section>
 </x-layouts.marketing>

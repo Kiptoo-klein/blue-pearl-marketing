@@ -11,7 +11,9 @@ class MarketingWebsiteTest extends TestCase
         $this
             ->get(route('home'))
             ->assertOk()
-            ->assertSee('Clear cargo faster')
+            ->assertSee(
+                'Customs clearance and logistics support in Kenya.'
+            )
             ->assertSee('Request a Quote');
     }
 
@@ -405,5 +407,145 @@ class MarketingWebsiteTest extends TestCase
             'image/png',
             $dimensions['mime']
         );
+    }
+
+    public function test_homepage_links_to_each_public_service(): void
+    {
+        $response = $this
+            ->get(route('home'))
+            ->assertOk();
+
+        $services = collect(config('services'))
+            ->filter(
+                fn (mixed $details): bool =>
+                    is_array($details)
+                    && isset(
+                        $details['name'],
+                        $details['summary']
+                    )
+            );
+
+        foreach ($services as $slug => $details) {
+            $response
+                ->assertSee(
+                    route(
+                        'services.show',
+                        $slug
+                    ),
+                    false
+                )
+                ->assertSee(
+                    $details['name']
+                );
+        }
+    }
+
+    public function test_service_pages_link_back_to_services_and_related_services(): void
+    {
+        $service = 'customs-clearance';
+
+        $response = $this
+            ->get(route(
+                'services.show',
+                $service
+            ))
+            ->assertOk()
+            ->assertSee(
+                route('services'),
+                false
+            )
+            ->assertSee(
+                'All logistics services'
+            )
+            ->assertSee(
+                'Related logistics services'
+            );
+
+        $relatedServices = collect(
+            config('services')
+        )
+            ->filter(
+                fn (mixed $details): bool =>
+                    is_array($details)
+                    && isset(
+                        $details['name'],
+                        $details['summary']
+                    )
+            )
+            ->reject(
+                fn (
+                    mixed $details,
+                    string $slug
+                ): bool =>
+                    $slug === $service
+            )
+            ->take(3);
+
+        foreach ($relatedServices as $slug => $details) {
+            $response
+                ->assertSee(
+                    route(
+                        'services.show',
+                        $slug
+                    ),
+                    false
+                )
+                ->assertSee(
+                    $details['name']
+                );
+        }
+    }
+
+    public function test_about_faq_and_contact_link_into_service_journey(): void
+    {
+        $this
+            ->get(route('about'))
+            ->assertOk()
+            ->assertSee(
+                route('services'),
+                false
+            );
+
+        $this
+            ->get(route('faq'))
+            ->assertOk()
+            ->assertSee(
+                route(
+                    'services.show',
+                    'customs-clearance'
+                ),
+                false
+            )
+            ->assertSee(
+                route(
+                    'services.show',
+                    'vehicle-importation'
+                ),
+                false
+            );
+
+        $this
+            ->get(route('contact'))
+            ->assertOk()
+            ->assertSee(
+                route('services'),
+                false
+            );
+    }
+
+    public function test_faq_does_not_expose_old_location_or_internal_placeholder_copy(): void
+    {
+        $this
+            ->get(route('faq'))
+            ->assertOk()
+            ->assertDontSee(
+                'based in Mombasa'
+            )
+            ->assertDontSee(
+                'should be updated'
+            )
+            ->assertDontSee(
+                'before publishing'
+            );
     }
 }

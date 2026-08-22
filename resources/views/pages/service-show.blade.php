@@ -2,11 +2,36 @@
     :title="$details['seo_title'] ?? $details['name']"
     :description="$details['seo_description'] ?? $details['summary']"
 >
+    @php
+        $relatedServices = collect(config('services'))
+            ->filter(
+                fn ($details) =>
+                    is_array($details)
+                    && isset(
+                        $details['name'],
+                        $details['summary']
+                    )
+            )
+            ->reject(
+                fn ($details, $slug) =>
+                    $slug === $service
+            )
+            ->take(3);
+    @endphp
+
     <section class="relative overflow-hidden bg-slate-950 py-20 text-white sm:py-24">
         <div class="absolute -right-24 top-0 size-80 rounded-full bg-cyan-600/20 blur-3xl"></div>
 
         <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <p class="text-sm font-black uppercase tracking-[0.2em] text-cyan-300">
+
+            <a
+                href="{{ route('services') }}"
+                class="inline-flex text-sm font-bold text-cyan-300 hover:text-white"
+            >
+                ← All logistics services
+            </a>
+
+            <p class="mt-8 text-sm font-black uppercase tracking-[0.2em] text-cyan-300">
                 {{ $details['eyebrow'] }}
             </p>
 
@@ -47,7 +72,7 @@
                 </p>
 
                 <h2 class="mt-4 text-3xl font-black tracking-tight text-slate-950">
-                    What this service can include
+                    What {{ $details['name'] }} can include
                 </h2>
 
                 <div class="mt-8 grid gap-4 sm:grid-cols-2">
@@ -125,7 +150,53 @@
     <section class="bg-white py-20 sm:py-24">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-            <div class="rounded-[2rem] bg-gradient-to-br from-cyan-50 to-white p-8 ring-1 ring-slate-200 sm:p-12">
+            <p class="text-sm font-black uppercase tracking-[0.2em] text-cyan-700">
+                Related logistics services
+            </p>
+
+            <h2 class="mt-4 text-3xl font-black tracking-tight text-slate-950">
+                Explore other ways we can support your cargo.
+            </h2>
+
+            <div class="mt-10 grid gap-6 md:grid-cols-3">
+                @foreach ($relatedServices as $slug => $related)
+                    <a
+                        href="{{ route('services.show', $slug) }}"
+                        class="rounded-3xl border border-slate-200 p-6 shadow-sm transition hover:-translate-y-1 hover:border-cyan-300 hover:shadow-lg"
+                    >
+                        <span class="grid size-10 place-items-center rounded-xl bg-cyan-100 text-xs font-black text-cyan-700">
+                            BP
+                        </span>
+
+                        <h3 class="mt-5 text-xl font-black text-slate-950">
+                            {{ $related['name'] }}
+                        </h3>
+
+                        <p class="mt-3 text-sm leading-7 text-slate-600">
+                            {{ $related['summary'] }}
+                        </p>
+
+                        <span class="mt-5 inline-flex text-sm font-black text-cyan-700">
+                            View service →
+                        </span>
+                    </a>
+                @endforeach
+            </div>
+
+            <a
+                href="{{ route('services') }}"
+                class="mt-8 inline-flex text-sm font-black text-cyan-700 hover:text-cyan-900"
+            >
+                View all logistics services →
+            </a>
+
+        </div>
+    </section>
+
+    <section class="bg-slate-100 py-20 sm:py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+            <div class="rounded-[2rem] bg-white p-8 ring-1 ring-slate-200 sm:p-12">
                 <div class="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
 
                     <div>
@@ -134,12 +205,12 @@
                         </p>
 
                         <h2 class="mt-4 text-3xl font-black tracking-tight text-slate-950">
-                            Share the shipment details you already have.
+                            Need {{ $details['name'] }} support?
                         </h2>
 
                         <p class="mt-4 max-w-2xl text-sm leading-7 text-slate-600">
-                            We will review the information and explain the next
-                            practical steps for your cargo.
+                            Share the shipment details you already have and we
+                            will explain the next practical steps.
                         </p>
                     </div>
 

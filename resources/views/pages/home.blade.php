@@ -11,18 +11,21 @@
         <div class="relative mx-auto grid max-w-7xl gap-14 px-4 py-20 sm:px-6 sm:py-28 lg:grid-cols-[1.08fr_.92fr] lg:items-center lg:px-8 lg:py-32">
             <div>
                 <p class="inline-flex rounded-full border border-cyan-300/30 bg-cyan-300/10 px-4 py-2 text-xs font-black uppercase tracking-[0.2em] text-cyan-200">
-                    Customs clearance · Freight · Delivery
+                    Customs clearance · Freight · Logistics
                 </p>
 
                 <h1 class="mt-7 text-4xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-                    Clear cargo faster.
-                    <span class="text-cyan-300">Move it with confidence.</span>
+                    Customs clearance and logistics support in Kenya.
+                    <span class="text-cyan-300">
+                        Move cargo with confidence.
+                    </span>
                 </h1>
 
                 <p class="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
-                    Kenya-based support for customs clearance, air and sea freight
-                    forwarding, cargo handling, warehousing, vehicle importation
-                    and delivery for clients in Kenya and the DRC.
+                    Blue Pearl Logistics supports customs clearance, air and sea
+                    freight forwarding, port and CFS handling, warehousing,
+                    vehicle importation and cargo delivery for clients in Kenya
+                    and the DRC.
                 </p>
 
                 <div class="mt-9 flex flex-col gap-3 sm:flex-row">
@@ -34,12 +37,10 @@
                     </a>
 
                     <a
-                        href="https://wa.me/{{ config('company.whatsapp') }}"
-                        target="_blank"
-                        rel="noopener"
+                        href="{{ route('services') }}"
                         class="rounded-full border border-white/20 px-7 py-3.5 text-center text-sm font-black hover:bg-white/10"
                     >
-                        Chat on WhatsApp
+                        Explore Our Services
                     </a>
                 </div>
             </div>
@@ -81,12 +82,17 @@
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
             <p class="text-sm font-black uppercase tracking-[0.2em] text-cyan-700">
-                What we handle
+                Logistics services in Kenya
             </p>
 
             <h2 class="mt-4 max-w-3xl text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">
-                Logistics services built around your cargo.
+                Practical support across the cargo journey.
             </h2>
+
+            <p class="mt-5 max-w-3xl text-base leading-8 text-slate-600">
+                Explore our customs clearance, freight, cargo handling,
+                warehousing, transport and vehicle importation services.
+            </p>
 
             <div class="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
                 @foreach (
@@ -107,21 +113,44 @@
                         </span>
 
                         <h3 class="mt-6 text-xl font-black text-slate-950">
-                            {{ $service['name'] }}
+                            <a
+                                href="{{ route('services.show', $slug) }}"
+                                class="hover:text-cyan-700"
+                            >
+                                {{ $service['name'] }}
+                            </a>
                         </h3>
 
                         <p class="mt-3 flex-1 text-sm leading-7 text-slate-600">
                             {{ $service['summary'] }}
                         </p>
 
-                        <a
-                            href="{{ route('quote', ['service' => $slug]) }}"
-                            class="mt-5 inline-flex text-sm font-black text-cyan-700 hover:text-cyan-900"
-                        >
-                            Request this service →
-                        </a>
+                        <div class="mt-5 flex flex-wrap gap-x-5 gap-y-2">
+                            <a
+                                href="{{ route('services.show', $slug) }}"
+                                class="text-sm font-black text-cyan-700 hover:text-cyan-900"
+                            >
+                                View service →
+                            </a>
+
+                            <a
+                                href="{{ route('quote', ['service' => $slug]) }}"
+                                class="text-sm font-bold text-slate-500 hover:text-slate-950"
+                            >
+                                Request quote
+                            </a>
+                        </div>
                     </article>
                 @endforeach
+            </div>
+
+            <div class="mt-10">
+                <a
+                    href="{{ route('services') }}"
+                    class="inline-flex rounded-full border border-slate-300 px-6 py-3 text-sm font-black text-slate-800 transition hover:border-cyan-500 hover:text-cyan-700"
+                >
+                    View All Logistics Services →
+                </a>
             </div>
         </div>
     </section>
@@ -156,6 +185,13 @@
                         </div>
                     @endforeach
                 </div>
+
+                <a
+                    href="{{ route('about') }}"
+                    class="mt-7 inline-flex text-sm font-black text-cyan-300 hover:text-white"
+                >
+                    Learn more about Blue Pearl →
+                </a>
             </div>
 
             <div>

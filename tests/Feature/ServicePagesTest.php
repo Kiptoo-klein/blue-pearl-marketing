@@ -45,7 +45,7 @@ class ServicePagesTest extends TestCase
             ->get(route('faq'))
             ->assertOk()
             ->assertSee(
-                'Frequently asked questions'
+                'Customs and logistics FAQs'
             );
     }
 
