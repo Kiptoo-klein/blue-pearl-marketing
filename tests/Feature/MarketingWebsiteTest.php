@@ -455,7 +455,7 @@ class MarketingWebsiteTest extends TestCase
                 false
             )
             ->assertSee(
-                'All logistics services'
+                'View all logistics services'
             )
             ->assertSee(
                 'Related logistics services'

@@ -17,19 +17,87 @@
                     $slug === $service
             )
             ->take(3);
+
+        $breadcrumbSchema = [
+            '@context' => 'https://schema.org',
+            '@type' => 'BreadcrumbList',
+            'itemListElement' => [
+                [
+                    '@type' => 'ListItem',
+                    'position' => 1,
+                    'name' => 'Home',
+                    'item' => route('home'),
+                ],
+                [
+                    '@type' => 'ListItem',
+                    'position' => 2,
+                    'name' => 'Services',
+                    'item' => route('services'),
+                ],
+                [
+                    '@type' => 'ListItem',
+                    'position' => 3,
+                    'name' => $details['name'],
+                    'item' => route(
+                        'services.show',
+                        $service
+                    ),
+                ],
+            ],
+        ];
     @endphp
+
+    <script type="application/ld+json">
+        {!! json_encode(
+            $breadcrumbSchema,
+            JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
+        ) !!}
+    </script>
 
     <section class="relative overflow-hidden bg-slate-950 py-20 text-white sm:py-24">
         <div class="absolute -right-24 top-0 size-80 rounded-full bg-cyan-600/20 blur-3xl"></div>
 
         <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-            <a
-                href="{{ route('services') }}"
-                class="inline-flex text-sm font-bold text-cyan-300 hover:text-white"
+            <nav
+                aria-label="Breadcrumb"
+                class="flex flex-wrap items-center gap-2 text-sm"
             >
-                ← All logistics services
-            </a>
+                <a
+                    href="{{ route('home') }}"
+                    class="font-bold text-slate-400 transition hover:text-white"
+                >
+                    Home
+                </a>
+
+                <span
+                    aria-hidden="true"
+                    class="text-slate-600"
+                >
+                    /
+                </span>
+
+                <a
+                    href="{{ route('services') }}"
+                    class="font-bold text-slate-400 transition hover:text-white"
+                >
+                    Services
+                </a>
+
+                <span
+                    aria-hidden="true"
+                    class="text-slate-600"
+                >
+                    /
+                </span>
+
+                <span
+                    aria-current="page"
+                    class="font-bold text-cyan-300"
+                >
+                    {{ $details['name'] }}
+                </span>
+            </nav>
 
             <p class="mt-8 text-sm font-black uppercase tracking-[0.2em] text-cyan-300">
                 {{ $details['eyebrow'] }}
