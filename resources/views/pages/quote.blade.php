@@ -85,11 +85,19 @@
                             value="{{ old('name') }}"
                             autocomplete="name"
                             required
+                            @error('name')
+                                aria-invalid="true"
+                                aria-describedby="name-error"
+                            @enderror
                             class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100"
                         >
 
                         @error('name')
-                            <p class="mt-2 text-sm text-red-600">
+                            <p
+                                id="name-error"
+                                role="alert"
+                                class="mt-2 text-sm text-red-600"
+                            >
                                 {{ $message }}
                             </p>
                         @enderror
@@ -109,12 +117,19 @@
                             type="tel"
                             value="{{ old('phone') }}"
                             autocomplete="tel"
-                            aria-describedby="contact-help"
+                            aria-describedby="contact-help{{ $errors->has('phone') ? ' phone-error' : '' }}"
+                            @error('phone')
+                                aria-invalid="true"
+                            @enderror
                             class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100"
                         >
 
                         @error('phone')
-                            <p class="mt-2 text-sm text-red-600">
+                            <p
+                                id="phone-error"
+                                role="alert"
+                                class="mt-2 text-sm text-red-600"
+                            >
                                 {{ $message }}
                             </p>
                         @enderror
@@ -134,12 +149,19 @@
                             type="email"
                             value="{{ old('email') }}"
                             autocomplete="email"
-                            aria-describedby="contact-help"
+                            aria-describedby="contact-help{{ $errors->has('email') ? ' email-error' : '' }}"
+                            @error('email')
+                                aria-invalid="true"
+                            @enderror
                             class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100"
                         >
 
                         @error('email')
-                            <p class="mt-2 text-sm text-red-600">
+                            <p
+                                id="email-error"
+                                role="alert"
+                                class="mt-2 text-sm text-red-600"
+                            >
                                 {{ $message }}
                             </p>
                         @enderror
@@ -164,6 +186,10 @@
                             id="service"
                             name="service"
                             required
+                            @error('service')
+                                aria-invalid="true"
+                                aria-describedby="service-error"
+                            @enderror
                             class="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100"
                         >
                             <option value="">
@@ -206,7 +232,11 @@
                         </select>
 
                         @error('service')
-                            <p class="mt-2 text-sm text-red-600">
+                            <p
+                                id="service-error"
+                                role="alert"
+                                class="mt-2 text-sm text-red-600"
+                            >
                                 {{ $message }}
                             </p>
                         @enderror
@@ -225,12 +255,20 @@
                             name="message"
                             rows="5"
                             required
+                            @error('message')
+                                aria-invalid="true"
+                                aria-describedby="message-error"
+                            @enderror
                             placeholder="Briefly describe the service or cargo assistance you need."
                             class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100"
                         >{{ old('message') }}</textarea>
 
                         @error('message')
-                            <p class="mt-2 text-sm text-red-600">
+                            <p
+                                id="message-error"
+                                role="alert"
+                                class="mt-2 text-sm text-red-600"
+                            >
                                 {{ $message }}
                             </p>
                         @enderror
