@@ -6,7 +6,7 @@
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
             <p class="text-sm font-black uppercase tracking-[0.2em] text-cyan-300">
-                Our services
+                Logistics services in Kenya
             </p>
 
             <h1 class="mt-4 max-w-4xl text-4xl font-black tracking-tight sm:text-5xl">
