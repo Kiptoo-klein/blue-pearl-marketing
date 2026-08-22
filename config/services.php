@@ -40,6 +40,11 @@ return [
             'Individuals importing personal cargo',
             'Businesses needing documentation and compliance support',
         ],
+        'related_services' => [
+            'freight-forwarding',
+            'container-handling',
+            'transport-delivery',
+        ],
     ],
 
     'freight-forwarding' => [
@@ -80,6 +85,11 @@ return [
             'Air freight customers',
             'Commercial cargo',
             'Consolidated shipments',
+        ],
+        'related_services' => [
+            'customs-clearance',
+            'container-handling',
+            'transport-delivery',
         ],
     ],
 
@@ -122,6 +132,11 @@ return [
             'Commercial cargo',
             'Consolidated shipments',
         ],
+        'related_services' => [
+            'customs-clearance',
+            'freight-forwarding',
+            'transport-delivery',
+        ],
     ],
 
     'warehousing-packing-removals' => [
@@ -162,6 +177,11 @@ return [
             'Personal effects',
             'Stored cargo',
             'Goods requiring packing or removals support',
+        ],
+        'related_services' => [
+            'transport-delivery',
+            'freight-forwarding',
+            'general-cargo',
         ],
     ],
 
@@ -204,6 +224,11 @@ return [
             'Project materials',
             'Machinery and equipment',
         ],
+        'related_services' => [
+            'freight-forwarding',
+            'container-handling',
+            'transport-delivery',
+        ],
     ],
 
     'transport-delivery' => [
@@ -244,6 +269,11 @@ return [
             'Vehicles',
             'Commercial goods',
             'Warehouse deliveries',
+        ],
+        'related_services' => [
+            'customs-clearance',
+            'container-handling',
+            'warehousing-packing-removals',
         ],
     ],
 
@@ -286,6 +316,11 @@ return [
             'Vehicle dealers',
             'Commercial fleets',
             'Returning residents',
+        ],
+        'related_services' => [
+            'customs-clearance',
+            'container-handling',
+            'transport-delivery',
         ],
     ],
 ];

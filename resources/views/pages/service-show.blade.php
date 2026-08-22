@@ -3,18 +3,29 @@
     :description="$details['seo_description'] ?? $details['summary']"
 >
     @php
-        $relatedServices = collect(config('services'))
+        $publicServices = collect(config('services'))
             ->filter(
-                fn ($details) =>
-                    is_array($details)
+                fn ($serviceDetails) =>
+                    is_array($serviceDetails)
                     && isset(
-                        $details['name'],
-                        $details['summary']
+                        $serviceDetails['name'],
+                        $serviceDetails['summary']
                     )
+            );
+
+        $relatedServices = collect(
+            $details['related_services'] ?? []
+        )
+            ->filter(
+                fn ($slug) =>
+                    is_string($slug)
+                    && $slug !== $service
+                    && $publicServices->has($slug)
             )
-            ->reject(
-                fn ($details, $slug) =>
-                    $slug === $service
+            ->mapWithKeys(
+                fn ($slug) => [
+                    $slug => $publicServices->get($slug),
+                ]
             )
             ->take(3);
 

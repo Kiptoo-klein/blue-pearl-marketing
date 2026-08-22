@@ -442,57 +442,59 @@ class MarketingWebsiteTest extends TestCase
 
     public function test_service_pages_link_back_to_services_and_related_services(): void
     {
-        $service = 'customs-clearance';
-
-        $response = $this
-            ->get(route(
-                'services.show',
-                $service
-            ))
-            ->assertOk()
-            ->assertSee(
-                route('services'),
-                false
-            )
-            ->assertSee(
-                'View all logistics services'
-            )
-            ->assertSee(
-                'Related logistics services'
-            );
-
-        $relatedServices = collect(
-            config('services')
-        )
+        $services = collect(config('services'))
             ->filter(
                 fn (mixed $details): bool =>
                     is_array($details)
                     && isset(
                         $details['name'],
-                        $details['summary']
+                        $details['summary'],
+                        $details['related_services']
                     )
-            )
-            ->reject(
-                fn (
-                    mixed $details,
-                    string $slug
-                ): bool =>
-                    $slug === $service
-            )
-            ->take(3);
+            );
 
-        foreach ($relatedServices as $slug => $details) {
-            $response
+        foreach ($services as $service => $details) {
+            $response = $this
+                ->get(route(
+                    'services.show',
+                    $service
+                ))
+                ->assertOk()
                 ->assertSee(
-                    route(
-                        'services.show',
-                        $slug
-                    ),
+                    route('services'),
                     false
                 )
                 ->assertSee(
-                    $details['name']
+                    'View all logistics services'
+                )
+                ->assertSee(
+                    'Related logistics services'
                 );
+
+            $this->assertCount(
+                3,
+                $details['related_services']
+            );
+
+            foreach ($details['related_services'] as $relatedSlug) {
+                $relatedDetails = config(
+                    "services.{$relatedSlug}"
+                );
+
+                $this->assertIsArray($relatedDetails);
+
+                $response
+                    ->assertSee(
+                        route(
+                            'services.show',
+                            $relatedSlug
+                        ),
+                        false
+                    )
+                    ->assertSee(
+                        $relatedDetails['name']
+                    );
+            }
         }
     }
 
