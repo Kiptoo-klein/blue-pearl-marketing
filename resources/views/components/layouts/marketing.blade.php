@@ -388,7 +388,10 @@
             </a>
 
             {{-- Desktop navigation --}}
-            <nav class="hidden items-center gap-8 lg:flex">
+            <nav
+                aria-label="Primary"
+                class="hidden items-center gap-8 lg:flex"
+            >
 
                 @foreach ([
                     'home' => 'Home',
@@ -456,7 +459,10 @@
                     Menu
                 </summary>
 
-                <nav class="absolute right-0 mt-3 grid w-64 gap-1 rounded-2xl border border-slate-200 bg-white p-3 shadow-2xl">
+                <nav
+                    aria-label="Mobile"
+                    class="absolute right-0 mt-3 grid w-64 gap-1 rounded-2xl border border-slate-200 bg-white p-3 shadow-2xl"
+                >
 
                     <a
                         href="{{ route('home') }}"
