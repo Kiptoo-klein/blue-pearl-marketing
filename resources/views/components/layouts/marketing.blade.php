@@ -466,6 +466,9 @@
 
                     <a
                         href="{{ route('home') }}"
+                        @if (request()->routeIs('home'))
+                            aria-current="page"
+                        @endif
                         class="rounded-xl px-4 py-3 text-sm font-bold hover:bg-slate-100"
                     >
                         Home
@@ -473,6 +476,9 @@
 
                     <a
                         href="{{ route('about') }}"
+                        @if (request()->routeIs('about'))
+                            aria-current="page"
+                        @endif
                         class="rounded-xl px-4 py-3 text-sm font-bold hover:bg-slate-100"
                     >
                         About
@@ -480,6 +486,12 @@
 
                     <a
                         href="{{ route('services') }}"
+                        @if (
+                            request()->routeIs('services')
+                            || request()->routeIs('services.*')
+                        )
+                            aria-current="page"
+                        @endif
                         class="rounded-xl px-4 py-3 text-sm font-bold hover:bg-slate-100"
                     >
                         Services
@@ -487,6 +499,9 @@
 
                     <a
                         href="{{ route('faq') }}"
+                        @if (request()->routeIs('faq'))
+                            aria-current="page"
+                        @endif
                         class="rounded-xl px-4 py-3 text-sm font-bold hover:bg-slate-100"
                     >
                         FAQ
@@ -494,6 +509,9 @@
 
                     <a
                         href="{{ route('contact') }}"
+                        @if (request()->routeIs('contact'))
+                            aria-current="page"
+                        @endif
                         class="rounded-xl px-4 py-3 text-sm font-bold hover:bg-slate-100"
                     >
                         Contact
