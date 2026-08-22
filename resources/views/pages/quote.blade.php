@@ -83,6 +83,7 @@
                             name="name"
                             type="text"
                             value="{{ old('name') }}"
+                            autocomplete="name"
                             required
                             class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100"
                         >
@@ -105,8 +106,10 @@
                         <input
                             id="phone"
                             name="phone"
-                            type="text"
+                            type="tel"
                             value="{{ old('phone') }}"
+                            autocomplete="tel"
+                            aria-describedby="contact-help"
                             class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100"
                         >
 
@@ -130,6 +133,8 @@
                             name="email"
                             type="email"
                             value="{{ old('email') }}"
+                            autocomplete="email"
+                            aria-describedby="contact-help"
                             class="w-full rounded-xl border border-slate-300 px-4 py-3 text-sm outline-none transition focus:border-cyan-500 focus:ring-4 focus:ring-cyan-100"
                         >
 
@@ -140,7 +145,10 @@
                         @enderror
                     </div>
 
-                    <p class="-mt-2 text-xs text-slate-500 sm:col-span-2">
+                    <p
+                        id="contact-help"
+                        class="-mt-2 text-xs text-slate-500 sm:col-span-2"
+                    >
                         Provide at least a phone number or email address.
                     </p>
 
