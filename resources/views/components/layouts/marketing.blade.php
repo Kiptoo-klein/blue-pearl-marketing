@@ -332,6 +332,13 @@
 
 <body class="min-h-screen bg-slate-50 text-slate-900 antialiased">
 
+    <a
+        href="#main-content"
+        class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-white focus:px-4 focus:py-3 focus:text-sm focus:font-black focus:text-slate-950 focus:shadow-xl focus:outline-none focus:ring-4 focus:ring-cyan-300"
+    >
+        Skip to main content
+    </a>
+
     {{-- Top information bar --}}
     <div class="bg-slate-950 text-white">
         <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-2 text-xs sm:px-6 lg:px-8">
@@ -502,7 +509,10 @@
     </header>
 
     {{-- Page content --}}
-    <main>
+    <main
+        id="main-content"
+        tabindex="-1"
+    >
         {{ $slot }}
     </main>
 
