@@ -41,7 +41,7 @@ return [
         ],
 
         'about' => [
-            'title' => 'About Blue Pearl Logistics',
+            'title' => 'About Us',
             'description' => 'Learn about Blue Pearl Logistics Limited and our approach to customs clearance, freight forwarding, cargo handling, warehousing, transport and vehicle importation in Kenya.',
         ],
 
@@ -61,7 +61,7 @@ return [
         ],
 
         'contact' => [
-            'title' => 'Contact Blue Pearl Logistics',
+            'title' => 'Contact Us',
             'description' => 'Contact Blue Pearl Logistics Limited for customs clearance, freight forwarding, cargo handling, warehousing, transport and vehicle importation enquiries in Kenya.',
         ],
     ],
