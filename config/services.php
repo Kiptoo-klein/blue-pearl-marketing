@@ -3,6 +3,8 @@
 return [
     'customs-clearance' => [
         'name' => 'Customs Clearance & Compliance',
+        'seo_title' => 'Customs Clearance Services in Kenya',
+        'seo_description' => 'Customs clearance services in Kenya with support for import documentation, declarations, compliance requirements, cargo release and onward transport coordination.',
         'eyebrow' => 'Clearance and compliance support',
         'summary' => 'Practical support with customs documentation, declarations, compliance requirements, cargo release and shipment coordination.',
         'intro' => 'Blue Pearl Logistics helps importers understand and complete the steps required to clear cargo through customs in Kenya.',
@@ -42,6 +44,8 @@ return [
 
     'freight-forwarding' => [
         'name' => 'Air & Sea Freight Forwarding',
+        'seo_title' => 'Air & Sea Freight Forwarding in Kenya',
+        'seo_description' => 'Air and sea freight forwarding support for cargo moving into Kenya, including shipment documentation, arrival coordination and onward delivery.',
         'eyebrow' => 'Cargo coordination',
         'summary' => 'Coordination for cargo moving into Kenya by air and sea.',
         'intro' => 'We support air and sea freight movements by coordinating shipment information, documents, arrival details and onward logistics.',
@@ -81,6 +85,8 @@ return [
 
     'container-handling' => [
         'name' => 'Port, CFS & Container Handling',
+        'seo_title' => 'Port, CFS & Container Handling in Kenya',
+        'seo_description' => 'Port and CFS container handling services in Kenya for FCL and LCL cargo, including release coordination, transport planning and empty-container returns.',
         'eyebrow' => 'Port to destination',
         'summary' => 'Port and CFS handling support for FCL and LCL cargo from release through transport and container return requirements.',
         'intro' => 'Blue Pearl Logistics coordinates containerized and consolidated cargo through port and Container Freight Station processes, release, transport and delivery.',
@@ -120,6 +126,8 @@ return [
 
     'warehousing-packing-removals' => [
         'name' => 'Warehousing, Packing & Removals',
+        'seo_title' => 'Warehousing, Packing & Removals in Kenya',
+        'seo_description' => 'Warehousing, packing and removals support in Kenya for commercial goods, personal effects and cargo requiring storage, handling or onward transport.',
         'eyebrow' => 'Storage and handling support',
         'summary' => 'Practical warehousing, packing and removals support for goods requiring secure handling before onward movement.',
         'intro' => 'Blue Pearl Logistics supports customers who need warehousing, packing or removals services as part of their wider logistics requirements.',
@@ -159,6 +167,8 @@ return [
 
     'general-cargo' => [
         'name' => 'LCL, Break-Bulk & Project Cargo',
+        'seo_title' => 'LCL, Break-Bulk & Project Cargo in Kenya',
+        'seo_description' => 'Logistics support in Kenya for LCL consolidation, break-bulk shipments, project cargo, machinery and equipment requiring specialized handling.',
         'eyebrow' => 'Flexible cargo solutions',
         'summary' => 'Flexible logistics support for consolidated, break-bulk, project and specialized cargo.',
         'intro' => 'We coordinate cargo that requires more specialized handling, including LCL consolidation, break-bulk shipments and project cargo.',
@@ -198,6 +208,8 @@ return [
 
     'transport-delivery' => [
         'name' => 'Transport & Door-to-Door Delivery',
+        'seo_title' => 'Cargo Transport & Door-to-Door Delivery in Kenya',
+        'seo_description' => 'Cargo transport and door-to-door delivery coordination in Kenya for containers, vehicles, commercial goods and warehouse deliveries.',
         'eyebrow' => 'Onward logistics',
         'summary' => 'Cargo movement from the port, CFS, terminal or warehouse to the agreed destination.',
         'intro' => 'We coordinate trucking and delivery for containers, vehicles and general cargo after release.',
@@ -237,6 +249,8 @@ return [
 
     'vehicle-importation' => [
         'name' => 'Vehicle Importation',
+        'seo_title' => 'Vehicle Importation & Clearance Services in Kenya',
+        'seo_description' => 'Vehicle importation support in Kenya covering document review, customs clearance coordination, port release, registration assistance and delivery planning.',
         'eyebrow' => 'Vehicle clearance',
         'summary' => 'Guidance and coordination for imported vehicles arriving through Kenyan ports.',
         'intro' => 'We help individuals and businesses understand the clearance, release and delivery process for imported vehicles.',

@@ -1,6 +1,6 @@
 <x-layouts.marketing
-    :title="$details['name']"
-    :description="$details['summary']"
+    :title="$details['seo_title'] ?? $details['name']"
+    :description="$details['seo_description'] ?? $details['summary']"
 >
     <section class="relative overflow-hidden bg-slate-950 py-20 text-white sm:py-24">
         <div class="absolute -right-24 top-0 size-80 rounded-full bg-cyan-600/20 blur-3xl"></div>

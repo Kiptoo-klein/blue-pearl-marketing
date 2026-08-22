@@ -4,13 +4,98 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>
-        {{ isset($title) ? $title.' | ' : '' }}{{ config('company.name') }}
-    </title>
+    @php
+        $routeName = request()->route()?->getName();
+
+        $routeSeo = $routeName
+            ? config("seo.pages.{$routeName}", [])
+            : [];
+
+        $pageTitleBase = $routeSeo['title']
+            ?? $title
+            ?? config('company.name');
+
+        $pageDescription = $routeSeo['description']
+            ?? $description
+            ?? 'Customs clearance, air and sea freight forwarding, cargo handling, warehousing, transport and vehicle importation support in Kenya.';
+
+        $seoSiteName = config(
+            'seo.site_name',
+            config('company.name')
+        );
+
+        $pageTitle = $pageTitleBase === $seoSiteName
+            ? $pageTitleBase
+            : $pageTitleBase.' | '.$seoSiteName;
+
+        $canonicalUrl = request()->url();
+    @endphp
+
+    <title>{{ $pageTitle }}</title>
 
     <meta
         name="description"
-        content="{{ $description ?? 'Customs clearance, air and sea freight forwarding, cargo handling, warehousing, transport and vehicle importation support in Kenya.' }}"
+        content="{{ $pageDescription }}"
+    >
+
+    <meta
+        name="robots"
+        content="{{ config('seo.indexing_enabled')
+            ? 'index, follow'
+            : 'noindex, nofollow'
+        }}"
+    >
+
+    <link
+        rel="canonical"
+        href="{{ $canonicalUrl }}"
+    >
+
+    {{-- Open Graph --}}
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:locale"
+        content="en_KE"
+    >
+
+    <meta
+        property="og:site_name"
+        content="{{ $seoSiteName }}"
+    >
+
+    <meta
+        property="og:title"
+        content="{{ $pageTitle }}"
+    >
+
+    <meta
+        property="og:description"
+        content="{{ $pageDescription }}"
+    >
+
+    <meta
+        property="og:url"
+        content="{{ $canonicalUrl }}"
+    >
+
+    {{-- Twitter / X --}}
+    <meta
+        name="twitter:card"
+        content="summary"
+    >
+
+    <meta
+        name="twitter:title"
+        content="{{ $pageTitle }}"
+    >
+
+    <meta
+        name="twitter:description"
+        content="{{ $pageDescription }}"
     >
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
