@@ -2,6 +2,55 @@
     title="Customs Clearance and Logistics Support"
     description="Blue Pearl Logistics Limited provides customs clearance, air and sea freight forwarding, cargo handling, warehousing, transport, vehicle importation and delivery support for clients in Kenya and the DRC."
 >
+
+    <style>
+        @keyframes home-hero-ship {
+            0%, 28% {
+                opacity: 0;
+            }
+
+            33%, 61% {
+                opacity: 1;
+            }
+
+            66%, 100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes home-hero-sunset {
+            0%, 61% {
+                opacity: 0;
+            }
+
+            66%, 94% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .home-hero-secondary {
+            opacity: 0;
+            animation: home-hero-ship 30s ease-in-out infinite;
+        }
+
+        .home-hero-tertiary {
+            opacity: 0;
+            animation: home-hero-sunset 30s ease-in-out infinite;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .home-hero-secondary,
+            .home-hero-tertiary {
+                animation: none;
+                opacity: 0;
+            }
+        }
+    </style>
+
     <section class="relative overflow-hidden bg-slate-950 text-white">
         <div class="absolute inset-0 opacity-30">
             <div class="absolute -left-20 top-10 size-80 rounded-full bg-cyan-500 blur-3xl"></div>
@@ -46,15 +95,39 @@
             </div>
 
             <div class="rounded-[2rem] border border-white/10 bg-white/10 p-3 shadow-2xl backdrop-blur">
-                <img
-                    src="{{ asset('images/logistics/home-logistics-hero.webp') }}"
-                    alt="Container ship and port logistics operations"
-                    width="1400"
-                    height="1050"
-                    fetchpriority="high"
-                    decoding="async"
-                    class="aspect-[4/3] w-full rounded-[1.5rem] object-cover"
-                >
+                <div class="relative aspect-[4/3] overflow-hidden rounded-[1.5rem]">
+                    <img
+                        src="{{ asset('images/logistics/home-logistics-hero.webp') }}"
+                        alt="Container terminal and port logistics operations"
+                        width="1400"
+                        height="1050"
+                        fetchpriority="high"
+                        decoding="async"
+                        class="absolute inset-0 size-full object-cover"
+                    >
+
+                    <img
+                        src="{{ asset('images/logistics/home-logistics-hero-ship.webp') }}"
+                        alt=""
+                        width="1400"
+                        height="1050"
+                        fetchpriority="low"
+                        decoding="async"
+                        aria-hidden="true"
+                        class="home-hero-secondary absolute inset-0 size-full object-cover"
+                    >
+
+                    <img
+                        src="{{ asset('images/logistics/home-logistics-hero-sunset.webp') }}"
+                        alt=""
+                        width="1400"
+                        height="1050"
+                        fetchpriority="low"
+                        decoding="async"
+                        aria-hidden="true"
+                        class="home-hero-tertiary absolute inset-0 size-full object-cover"
+                    >
+                </div>
             </div>
         </div>
     </section>
