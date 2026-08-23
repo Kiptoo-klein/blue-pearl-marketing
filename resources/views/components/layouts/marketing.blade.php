@@ -220,7 +220,7 @@
     {{-- Site icon --}}
     <link
         rel="icon"
-        href="{{ asset('favicon.ico') }}"
+        href="{{ asset('blue-pearl-favicon.ico') }}"
         sizes="any"
     >
 
