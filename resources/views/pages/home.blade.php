@@ -32,13 +32,16 @@
             }
         }
 
-        .home-hero-secondary {
+        .home-hero-secondary,
+        .home-hero-tertiary {
             opacity: 0;
+        }
+
+        .home-hero-slideshow.is-ready .home-hero-secondary {
             animation: home-hero-ship 30s ease-in-out infinite;
         }
 
-        .home-hero-tertiary {
-            opacity: 0;
+        .home-hero-slideshow.is-ready .home-hero-tertiary {
             animation: home-hero-sunset 30s ease-in-out infinite;
         }
 
@@ -50,6 +53,33 @@
             }
         }
     </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slideshow = document.querySelector('.home-hero-slideshow');
+
+            if (! slideshow) {
+                return;
+            }
+
+            const images = [...slideshow.querySelectorAll('img')];
+
+            Promise.all(
+                images.map((image) => {
+                    if (image.complete) {
+                        return Promise.resolve();
+                    }
+
+                    return new Promise((resolve) => {
+                        image.addEventListener('load', resolve, { once: true });
+                        image.addEventListener('error', resolve, { once: true });
+                    });
+                })
+            ).then(() => {
+                slideshow.classList.add('is-ready');
+            });
+        });
+    </script>
 
     <section class="relative overflow-hidden bg-slate-950 text-white">
         <div class="absolute inset-0 opacity-30">
@@ -95,9 +125,9 @@
             </div>
 
             <div class="rounded-[2rem] border border-white/10 bg-white/10 p-3 shadow-2xl backdrop-blur">
-                <div class="relative aspect-[4/3] overflow-hidden rounded-[1.5rem]">
+                <div class="home-hero-slideshow relative aspect-[4/3] overflow-hidden rounded-[1.5rem]">
                     <img
-                        src="{{ asset('images/logistics/home-logistics-hero.webp') }}"
+                        src="{{ asset('images/logistics/home-logistics-hero-aerial.webp') }}"
                         alt="Container terminal and port logistics operations"
                         width="1400"
                         height="1050"
@@ -111,7 +141,7 @@
                         alt=""
                         width="1400"
                         height="1050"
-                        fetchpriority="low"
+                        fetchpriority="auto"
                         decoding="async"
                         aria-hidden="true"
                         class="home-hero-secondary absolute inset-0 size-full object-cover"
@@ -122,7 +152,7 @@
                         alt=""
                         width="1400"
                         height="1050"
-                        fetchpriority="low"
+                        fetchpriority="auto"
                         decoding="async"
                         aria-hidden="true"
                         class="home-hero-tertiary absolute inset-0 size-full object-cover"

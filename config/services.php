@@ -302,7 +302,7 @@ return [
         'eyebrow' => 'Vehicle clearance',
         'summary' => 'Guidance and coordination for imported vehicles arriving through Kenyan ports.',
         'intro' => 'We help individuals and businesses understand the clearance, release and delivery process for imported vehicles.',
-        'image' => 'images/logistics/vehicle-importation.webp',
+        'image' => 'images/logistics/vehicle-importation-port.webp',
         'image_alt' => 'Imported vehicles and vehicle logistics operations',
         'image_side' => 'right',
         'features' => [
